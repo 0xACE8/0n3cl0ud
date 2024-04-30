@@ -23,6 +23,14 @@ set argon.@global[0].online_wallpaper='none'
 EOF
 uci commit argon
 
+#
+uci batch <<EOF
+set cpufreq.cpufreq.governor0='balance'
+set cpufreq.cpufreq.minfreq0='192000'
+set cpufreq.cpufreq.maxfreq0='1320000'
+EOF
+uci commit cpufreq
+
 # ttyd autologin
 #uci batch <<EOF
 #set ttyd.@ttyd[0].interface='@lan'
@@ -35,13 +43,15 @@ uci commit argon
 #uci commit turboacc
 
 # netspeedtest homebox is on
-uci set netspeedtest.homebox.enabled='1'
+#uci set netspeedtest.homebox.enabled='1'
 #uci set netspeedtest.speedtestiperf3.enabled='1'
-uci commit netspeedtest
+#uci commit netspeedtest
 
 # system
 uci batch <<EOF
 set system.@system[0].hostname='OneCloud'
+set system.@system[0].timezone='JST-9'
+set system.@system[0].zonename=''Asia/Tokyo'
 delete system.ntp.enable_server
 add_list system.ntp.server="cn.ntp.org.cn"
 add_list system.ntp.server="edu.ntp.org.cn"
@@ -50,8 +60,7 @@ add_list system.ntp.server="ntp.tuna.tsinghua.edu.cn"
 set system.ntp.use_dhcp='0'
 EOF
 uci commit system
-#set system.@system[0].timezone='PST8PDT,M3.2.0,M11.1.0'
-#set system.@system[0].zonename='America/Los Angeles'
+
 
 # fix distfeeds
 #sed -i "/ace8/d" /etc/opkg/distfeeds.conf
