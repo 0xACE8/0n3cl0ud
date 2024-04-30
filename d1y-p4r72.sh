@@ -72,6 +72,6 @@ sudo rm package/base-files/files/etc/banner
 wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud_0p3nwr7/main/banner -O package/base-files/files/etc/banner
 
 # upgrade config
-wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud_0p3nwr7/main/99-init-settings -O package/base-files/files/etc/uci-defaults/99-init-settings
+wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/99-init-settings -O package/base-files/files/etc/uci-defaults/99-init-settings
 
 echo "diy-part2.sh is done."
