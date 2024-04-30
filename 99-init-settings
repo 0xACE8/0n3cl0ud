@@ -54,11 +54,18 @@ uci commit system
 #set system.@system[0].zonename='America/Los Angeles'
 
 # fix distfeeds
-sed -i "/ace8/d" /etc/opkg/distfeeds.conf
-sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
-sed -i "/passwall2/d" /etc/opkg/distfeeds.conf
-sed -i "/passwall/d" /etc/opkg/distfeeds.conf
-sed -i "/xd/d" /etc/opkg/distfeeds.conf
+#sed -i "/ace8/d" /etc/opkg/distfeeds.conf
+#sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
+#sed -i "/passwall2/d" /etc/opkg/distfeeds.conf
+#sed -i "/passwall/d" /etc/opkg/distfeeds.conf
+#sed -i "/xd/d" /etc/opkg/distfeeds.conf
+cat > /etc/opkg/distfeeds.conf <-EOF
+src/gz immortalwrt_base https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/base
+src/gz immortalwrt_luci https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/luci
+src/gz immortalwrt_packages https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/packages
+src/gz immortalwrt_routing https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/routing
+src/gz immortalwrt_telephony https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/telephony
+EOF
 
 # firewall
 uci batch <<EOF
@@ -121,7 +128,7 @@ set network.lan2.device='br-lan'
 set network.lan2.ipaddr='192.168.177.98'
 set network.lan2.netmask='255.255.255.0'
 set network.lan2.gateway='192.168.177.1'
-set network.lan2.metric='1'
+set network.lan2.metric='40'
 set network.lan2.dns='127.0.0.1'
 set network.lan3=interface
 set network.lan3.proto='static'
@@ -130,7 +137,7 @@ set network.lan3.ipaddr='192.168.177.99'
 set network.lan3.netmask='255.255.255.0'
 set network.lan3.gateway='192.168.177.1'
 set network.lan3.dns='127.0.0.1'
-set network.lan3.metric='2'
+set network.lan3.metric='40'
 EOF
 uci commit network
 /etc/init.d/network restart
