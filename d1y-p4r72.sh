@@ -7,11 +7,8 @@
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.177.97/g' package/base-files/files/bin/config_generate
 
-# Add mt7612u such as Netgear-A6210
-
-
 # Set password to PASSWORD
-#sed -i 's/root:::0:99999:7:::/root:$1$4xKZB45Q$w0CPT5M6vBWbYNmSWuxfU.:0:0:99999:7:::/g' package/base-files/files/etc/shadow
+sed -i 's/root:::0:99999:7:::/root:$1$4xKZB45Q$w0CPT5M6vBWbYNmSWuxfU.:0:0:99999:7:::/g' package/base-files/files/etc/shadow
 
 # Change ash to bash
 sed -i 's/ash/bash/g' package/base-files/files/etc/passwd
@@ -26,6 +23,9 @@ sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/luci/applications/luci-ap
 sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
 sed -i 's/START=18/START=99/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
+sed -i '65s/^#//g' feeds/packages/utils/ttyd/files/ttyd.init
+sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
+sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 
 # DHCP
 #mkdir -p package/base-files/files/etc/dnsmasq.d
