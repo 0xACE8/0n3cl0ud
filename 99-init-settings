@@ -33,10 +33,10 @@ uci commit cpufreq
 
 # ttyd autologin
 #uci batch <<EOF
-#set ttyd.@ttyd[0].interface='@lan'
+#set ttyd.@ttyd[0].command='/bin/login -f root'
 #EOF
 #uci commit ttyd
-#set ttyd.@ttyd[0].command='/bin/login -f root'
+#set ttyd.@ttyd[0].interface='@lan'
 
 # turboacc bbr_cca is on
 #uci set turboacc.config.bbr_cca='1'
