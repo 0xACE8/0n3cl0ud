@@ -49,5 +49,6 @@ for f in openwrt/bin/targets/*/*/*.burn.img; do
   sha256sum "$f" >"${f}.sha"
   xz -9 --threads=0 --compress "$f"
 done
+sudo rm -rf openwrt/bin/targets/*/*/*.tar
 #sudo rm -rf openwrt/bin/targets/*/*/*.img
 #sudo rm -rf openwrt/bin/targets/*/*/*.gz
