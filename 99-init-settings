@@ -63,17 +63,23 @@ uci commit system
 
 
 # fix distfeeds
-#sed -i "/ace8/d" /etc/opkg/distfeeds.conf
-#sed -i "/passwall_packages/d" /etc/opkg/distfeeds.conf
-#sed -i "/passwall2/d" /etc/opkg/distfeeds.conf
-#sed -i "/passwall/d" /etc/opkg/distfeeds.conf
-#sed -i "/xd/d" /etc/opkg/distfeeds.conf
-cat > /etc/opkg/distfeeds.conf <-EOF
+cat << "EOF" > /etc/opkg/distfeeds.conf
 src/gz immortalwrt_base https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/base
 src/gz immortalwrt_luci https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/luci
 src/gz immortalwrt_packages https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/packages
 src/gz immortalwrt_routing https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/routing
 src/gz immortalwrt_telephony https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/telephony
+EOF
+
+cat << "EOF" > /etc/opkg.conf
+dest root /
+dest ram /tmp
+lists_dir ext /var/opkg-lists
+option overlay_root /overlay
+option check_signature
+arch all 100
+arch arm_cortex-a5_neon-vfpv4 200
+arch arm_cortex-a5_vfpv4 300
 EOF
 
 # firewall
