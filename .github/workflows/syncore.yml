@@ -53,7 +53,7 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         if [ -e $GITHUB_WORKSPACE/argon ]; then
-          cp $GITHUB_WORKSPACE/argon $GITHUB_WORKSPACE/${{matrix.target}}
+          cp -r $GITHUB_WORKSPACE/argon $GITHUB_WORKSPACE/${{matrix.target}}
         fi
         if [ -e $GITHUB_WORKSPACE/0n3cl0ud-wifi.c0nf ]; then
           cp $GITHUB_WORKSPACE/0n3cl0ud-wifi.c0nf $GITHUB_WORKSPACE/${{matrix.target}}
