@@ -40,10 +40,10 @@ echo 'net.core.wmem_default=26214400' >>package/base-files/files/etc/sysctl.d/10
 echo 'net.core.netdev_max_backlog=2048' >>package/base-files/files/etc/sysctl.d/10-default.conf
 
 #5. Change luci list name
-sed -i 's/5e72e4/1c77ff/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
-sed -i 's/5e72e4/1c77ff/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
-sed -i 's/483d8b/1c77ff/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
-sed -i 's/483d8b/1c77ff/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
+#sed -i 's/5e72e4/1c77ff/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+#sed -i 's/5e72e4/1c77ff/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
+#sed -i 's/483d8b/1c77ff/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+#sed -i 's/483d8b/1c77ff/g' feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/css/dark.css
 
 rm -rf feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/favicon.ico
 wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/argon/favicon.ico "https://raw.githubusercontent.com/0xACE8/0n3cl0ud_0p3nwr7/main/argon/favicon.ico"
