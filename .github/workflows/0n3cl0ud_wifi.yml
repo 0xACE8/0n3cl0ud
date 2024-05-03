@@ -119,6 +119,7 @@ jobs:
       env:
         AUTHORIZED_KEYS: ${{ secrets.AUTHORIZED_KEYS }}
       run: |
+        mkdir -p package/base-files/files/etc/dropbear
         echo "${{ secrets.AUTHORIZED_KEYS }}" >> package/base-files/files/etc/dropbear/authorized_keys
         chmod 600 package/base-files/files/etc/dropbear/authorized_keys
 
