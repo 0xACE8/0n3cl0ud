@@ -118,10 +118,14 @@ jobs:
       working-directory: ./openwrt
       env:
         AUTHORIZED_KEYS: ${{ secrets.AUTHORIZED_KEYS }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         mkdir -p package/base-files/files/etc/dropbear
         echo "${{ secrets.AUTHORIZED_KEYS }}" >> package/base-files/files/etc/dropbear/authorized_keys
         chmod 600 package/base-files/files/etc/dropbear/authorized_keys
+        git clone https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git
+        mv openwrt-data/passwall2 package/base-files/files/etc/config
+        rm -rd openwrt-data
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
