@@ -152,7 +152,7 @@ jobs:
 
     - name: burn
       run: |
-        curl -sSL https://raw.githubusercontent.com/0xACE8/0n3cl0ud_0p3nwr7/main/burn.sh -o burn.sh && bash burn.sh
+        curl -sSL https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/burn.sh -o burn.sh && bash burn.sh
 
     - name: Check space usage
       if: (!cancelled())
