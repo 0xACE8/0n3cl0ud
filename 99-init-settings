@@ -133,6 +133,25 @@ uci commit dhcp
 /etc/init.d/dnsmasq restart
 #set dhcp.@dnsmasq[0].serversfile='/etc/dnsmasq.d/accelerated-domains.china.conf'
 
+#mosdns
+uci batch <<EOF
+set mosdns.config.enabled='1'
+set mosdns.config.listen_port='5335'
+set mosdns.config.geo_auto_update='1'
+set mosdns.config.geo_update_week_time='1'
+set mosdns.config.geo_update_day_time='2'
+set mosdns.config.dump_file='1'
+set mosdns.config.concurrent='2'
+set mosdns.config.custom_local_dns='1'
+set mosdns.config.dns_leak='1'
+set mosdns.config.bootstrap_dns='8.8.8.8'
+set mosdns.config.local_dns='223.5.5.5' '114.114.114.114'
+set mosdns.config.remote_dns='udp://127.0.0.53:53'
+set mosdns.config.enable_ecs_remote='0'
+set mosdns.config.dump_interval='3600'
+EOF
+uci commit mosdns
+
 # network config
 uci batch <<EOF
 delete network.lan.ip6assign
