@@ -23,11 +23,11 @@ set argon.@global[0].online_wallpaper='none'
 EOF
 uci commit argon
 
-#
+# limited cpufreq for v1.0 bug
 uci batch <<EOF
-set cpufreq.cpufreq.governor0='balance'
-set cpufreq.cpufreq.minfreq0='192000'
-set cpufreq.cpufreq.maxfreq0='1320000'
+set cpufreq.cpufreq.governor0='schedutil'
+set cpufreq.cpufreq.minfreq0='96000'
+set cpufreq.cpufreq.maxfreq0='1488000'
 EOF
 uci commit cpufreq
 
@@ -60,7 +60,6 @@ add_list system.ntp.server="ntp.tuna.tsinghua.edu.cn"
 set system.ntp.use_dhcp='0'
 EOF
 uci commit system
-
 
 # fix distfeeds
 #cat << "EOF" > /etc/opkg/distfeeds.conf
@@ -106,20 +105,32 @@ uci commit firewall
 /etc/init.d/firewall restart
 
 # dnsmasq
-# delete dhcp.@dnsmasq[0].boguspriv
-# delete dhcp.@dnsmasq[0].filterwin2k
-# delete dhcp.@dnsmasq[0].authoritative
-# delete dhcp.@dnsmasq[0].readethers
-# delete dhcp.@dnsmasq[0].resolvfile
-# delete dhcp.@dnsmasq[0].nonwildcard
-# delete dhcp.@dnsmasq[0].filter_a
-# set dhcp.@dnsmasq[0].nonegcache='1'
-# set dhcp.@dnsmasq[0].cachesize='10000'
-# set dhcp.@dnsmasq[0].filter_aaaa='1'
-# set dhcp.@dnsmasq[0].server='1.1.1.1#443'
-# set dhcp.@dnsmasq[0].noresolv='1'
-# set dhcp.@dnsmasq[0].nohosts='1'
+# dhcp.@dnsmasq[0].boguspriv      # 唯一授权
+# dhcp.@dnsmasq[0].dns_redirect   # DNS 重定向
+# dhcp.@dnsmasq[0].filterwin2k
+# dhcp.@dnsmasq[0].authoritative
+# dhcp.@dnsmasq[0].readethers
+# dhcp.@dnsmasq[0].resolvfile
+# dhcp.@dnsmasq[0].nonwildcard
+# dhcp.@dnsmasq[0].filter_a
+# dhcp.@dnsmasq[0].nonegcache='1'
+# dhcp.@dnsmasq[0].cachesize='10000'
+# dhcp.@dnsmasq[0].filter_aaaa='1'
+# dhcp.@dnsmasq[0].server='1.1.1.1#443'
+# dhcp.@dnsmasq[0].noresolv='1'
+# dhcp.@dnsmasq[0].nohosts='1'
+# dhcp.@dnsmasq[0].interface='lan'   # 监听接口
+# dhcp.@dnsmasq[0].dnsseccheckunsigned='0'   # DNSSEC 检查未签名
+# dhcp.@dnsmasq[0].filter_aaaa='1'  # 过滤 IPv6 AAAA 记录
+# dhcp.@dnsmasq[0].nonegcache='1'   # 禁用无效信息缓存
+
 uci batch <<EOF
+delete dhcp.@dnsmasq[0].boguspriv
+delete dhcp.@dnsmasq[0].dns_redirec
+set dhcp.@dnsmasq[0].interface='lan'
+set dhcp.@dnsmasq[0].dnsseccheckunsigned='0'
+set dhcp.@dnsmasq[0].filter_aaaa='1'
+set dhcp.@dnsmasq[0].nonegcache='1'
 delete dhcp.lan.dhcpv6
 delete dhcp.lan.ra
 delete dhcp.lan.ra_slaac
