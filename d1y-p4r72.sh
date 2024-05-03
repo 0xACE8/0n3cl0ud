@@ -22,8 +22,8 @@ sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/luci/applications/luci-ap
 # change some tips
 sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/root/usr/share/luci/menu.d/luci-app-samba4.json
-sed -i 's/START=18/START=99/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
-sed -i '65s/^#//g' feeds/packages/utils/ttyd/files/ttyd.init
+#sed -i 's/START=18/START=99/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
+sed -i '/interface}/d' feeds/packages/utils/ttyd/files/ttyd.init
 sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 
@@ -73,5 +73,6 @@ wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud_0p
 
 # upgrade config
 wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/99-init-settings -O package/base-files/files/etc/uci-defaults/99-init-settings
+wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/30-sysinfo.sh -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh
 
 echo "diy-part2.sh is done."
