@@ -17,7 +17,7 @@ uci commit luci
 uci batch <<EOF
 set system.@system[0].hostname='OneCloud'
 set system.@system[0].timezone='JST-9'
-set system.@system[0].zonename=''Asia/Tokyo'
+set system.@system[0].zonename='Asia/Tokyo'
 delete system.ntp.enable_server
 add_list system.ntp.server="cn.ntp.org.cn"
 add_list system.ntp.server="edu.ntp.org.cn"
