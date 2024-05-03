@@ -94,6 +94,7 @@ jobs:
       with:
         token: ${{ secrets.ACCESS_TOKEN }}
         repository: ${{ github.repository }}
+        delete_workflow_pattern: syncore.yml
         retain_days: 1
         keep_minimum_runs: 1
 
