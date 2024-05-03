@@ -123,6 +123,9 @@ jobs:
         mkdir -p package/base-files/files/etc/dropbear
         echo "${{ secrets.AUTHORIZED_KEYS }}" >> package/base-files/files/etc/dropbear/authorized_keys
         chmod 600 package/base-files/files/etc/dropbear/authorized_keys
+        git clone https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git feeds/ace8/luci-app-passwall2/root/etc/config/1
+        mv feeds/ace8/luci-app-passwall2/root/etc/config/1/passwall2 feeds/ace8/luci-app-passwall2/root/etc/config
+        rm -rdf feeds/ace8/luci-app-passwall2/root/etc/config/1
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
