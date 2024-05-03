@@ -63,12 +63,20 @@ uci commit system
 
 
 # fix distfeeds
+#cat << "EOF" > /etc/opkg/distfeeds.conf
+#src/gz immortalwrt_base https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/base
+#src/gz immortalwrt_luci https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/luci
+#src/gz immortalwrt_packages https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/packages
+#src/gz immortalwrt_routing https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/routing
+#src/gz immortalwrt_telephony https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/telephony
+#EOF
+
 cat << "EOF" > /etc/opkg/distfeeds.conf
-src/gz immortalwrt_base https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/base
-src/gz immortalwrt_luci https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/luci
-src/gz immortalwrt_packages https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/packages
-src/gz immortalwrt_routing https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/routing
-src/gz immortalwrt_telephony https://mirror.nju.edu.cn/immortalwrt/snapshots/packages/arm_cortex-a5_vfpv4/telephony
+src/gz immortalwrt_base https://downloads.immortalwrt.org/snapshots/packages/arm_cortex-a5_vfpv4/base
+src/gz immortalwrt_luci https://downloads.immortalwrt.org/snapshots/packages/arm_cortex-a5_vfpv4/luci
+src/gz immortalwrt_packages https://downloads.immortalwrt.org/snapshots/packages/arm_cortex-a5_vfpv4/packages
+src/gz immortalwrt_routing https://downloads.immortalwrt.org/snapshots/packages/arm_cortex-a5_vfpv4/routing
+src/gz immortalwrt_telephony https://downloads.immortalwrt.org/snapshots/packages/arm_cortex-a5_vfpv4/telephony
 EOF
 
 cat << "EOF" > /etc/opkg.conf
@@ -137,25 +145,27 @@ set network.lan6.device='@lan'
 set network.lan6.reqaddress='try'
 set network.lan6.reqprefix='auto'
 set network.lan6.dns='::1'
-set network.lan2=interface
-set network.lan2.proto='static'
-set network.lan2.device='br-lan'
-set network.lan2.ipaddr='192.168.177.98'
-set network.lan2.netmask='255.255.255.0'
-set network.lan2.gateway='192.168.177.1'
-set network.lan2.metric='40'
-set network.lan2.dns='127.0.0.1'
-set network.lan3=interface
-set network.lan3.proto='static'
-set network.lan3.device='br-lan'
-set network.lan3.ipaddr='192.168.177.99'
-set network.lan3.netmask='255.255.255.0'
-set network.lan3.gateway='192.168.177.1'
-set network.lan3.dns='127.0.0.1'
-set network.lan3.metric='40'
 EOF
 uci commit network
 /etc/init.d/network restart
+
+#set network.lan2=interface
+#set network.lan2.proto='static'
+#set network.lan2.device='br-lan'
+#set network.lan2.ipaddr='192.168.177.98'
+#set network.lan2.netmask='255.255.255.0'
+#set network.lan2.gateway='192.168.177.1'
+#set network.lan2.metric='40'
+#set network.lan2.dns='127.0.0.1'
+#set network.lan3=interface
+#set network.lan3.proto='static'
+#set network.lan3.device='br-lan'
+#set network.lan3.ipaddr='192.168.177.99'
+#set network.lan3.netmask='255.255.255.0'
+#set network.lan3.gateway='192.168.177.1'
+#set network.lan3.dns='127.0.0.1'
+#set network.lan3.metric='40'
+
 
 # dnscrypt-proxy2 setting
 sed -i 's/START=18/START=99/g' /etc/init.d/dnscrypt-proxy
