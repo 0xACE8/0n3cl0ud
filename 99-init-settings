@@ -16,7 +16,7 @@ uci commit luci
 # system
 uci batch <<EOF
 set system.@system[0].timezone='PST8PDT,M3.2.0,M11.1.0'
-set system.@system[0].zonename='Asia/Tokyo'
+set system.@system[0].zonename='America/Los Angeles'
 delete system.ntp.enable_server
 add_list system.ntp.server="cn.ntp.org.cn"
 add_list system.ntp.server="edu.ntp.org.cn"
