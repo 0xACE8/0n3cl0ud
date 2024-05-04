@@ -12,6 +12,8 @@ sed -i 's/exit 0/mount -o remount,rw \/rom\nmount -o remount,rw \/dev\/mmcblk1p2
 uci set luci.main.lang=zh_cn
 uci commit luci
 
+#
+/etc/init.d/dnscrypt-proxy stop
 
 # system
 uci delete system.ntp.enable_server
@@ -236,5 +238,8 @@ uci commit argon
 
 # crontabs
 #echo '* 4 * * 1  wget --no-check-certificate -O /etc/dnsmasq.d/accelerated-domains.china.conf "https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf"' >> /etc/crontabs/root
+
+#
+/etc/init.d/dnscrypt-proxy start
 
 exit 0
