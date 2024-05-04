@@ -91,7 +91,7 @@ add_list firewall.@zone[0].network='lan3'
 add_list firewall.@zone[0].network='lan6'
 EOF
 uci commit firewall
-#/etc/init.d/firewall restart
+/etc/init.d/firewall restart
 
 
 # DHCP & dnsmasq
@@ -112,7 +112,7 @@ set dhcp.lan.dynamicdhcp='0'
 set dhcp.@dnsmasq[0].server='127.0.0.1#5335'
 EOF
 uci commit dhcp
-#/etc/init.d/dnsmasq restart
+/etc/init.d/dnsmasq restart
 
 # dhcp.@dnsmasq[0].boguspriv      # 唯一授权
 # dhcp.@dnsmasq[0].dns_redirect   # DNS 重定向
@@ -137,7 +137,7 @@ uci commit dhcp
 
 # dropbear
 uci commit dropbear
-#/etc/init.d/dropbear restart
+/etc/init.d/dropbear restart
 
 
 #mosdns
@@ -158,7 +158,7 @@ set mosdns.config.enable_ecs_remote='0'
 set mosdns.config.dump_interval='3600'
 EOF
 uci commit mosdns
-#/etc/init.d/mosdns restart
+/etc/init.d/mosdns restart
 
 
 # fix distfeeds
@@ -236,4 +236,3 @@ uci commit argon
 #echo '* 4 * * 1  wget --no-check-certificate -O /etc/dnsmasq.d/accelerated-domains.china.conf "https://raw.githubusercontent.com/felixonmars/dnsmasq-china-list/master/accelerated-domains.china.conf"' >> /etc/crontabs/root
 
 exit 0
-reboot
