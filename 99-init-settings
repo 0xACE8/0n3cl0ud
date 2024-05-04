@@ -15,8 +15,7 @@ uci commit luci
 
 # system
 uci batch <<EOF
-set system.@system[0].hostname='OneCloud'
-set system.@system[0].timezone='JST-9'
+set system.@system[0].timezone='PST8PDT,M3.2.0,M11.1.0'
 set system.@system[0].zonename='Asia/Tokyo'
 delete system.ntp.enable_server
 add_list system.ntp.server="cn.ntp.org.cn"
@@ -26,6 +25,7 @@ add_list system.ntp.server="ntp.tuna.tsinghua.edu.cn"
 set system.ntp.use_dhcp='0'
 EOF
 uci commit system
+#set system.@system[0].hostname='OneCloud'
 
 
 # network config
