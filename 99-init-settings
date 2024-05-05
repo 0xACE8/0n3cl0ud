@@ -101,7 +101,7 @@ uci commit firewall
 # DHCP & dnsmasq
 uci batch <<EOF
 set dhcp.@dnsmasq[0].boguspriv='1'
-set dhcp.@dnsmasq[0].dns_redirec='0'
+set dhcp.@dnsmasq[0].dns_redirect='0'
 set dhcp.@dnsmasq[0].expandhosts='0'
 set dhcp.@dnsmasq[0].authoritative='0'
 set dhcp.@dnsmasq[0].interface='lan'
