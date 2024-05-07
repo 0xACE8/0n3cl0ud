@@ -158,6 +158,17 @@ jobs:
       run: |
         curl -sSL https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/burn.sh -o burn.sh && bash burn.sh
 
+    - name: send telegram message on push
+      uses: appleboy/telegram-action@master
+      if: steps.compile.outputs.status != 'success' && !cancelled()
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ⛔ 固件编译失败! ⛔
+          资源仓库: ${{ github.repository }}
+          编译耗时: ${{ env.time }}
+
     - name: Check space usage
       if: (!cancelled())
       run: df -hT
@@ -166,7 +177,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: OneCloud$_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
 
     - name: Organize files
@@ -192,7 +203,7 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
+          ✅ 固件顺利编译完成! ✅
           资源仓库: ${{ github.repository }}
-          固件包名：OneCloud${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-          固件编译成功！
-          format: markdown
+          编译耗时: ${{ env.time }}
+          固件名称: ImmortalWrt_HyperV${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
