@@ -161,15 +161,12 @@ jobs:
         curl -sSL https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/burn.sh -o burn.sh && bash burn.sh
 
     - name: send telegram message on push
-      uses: appleboy/telegram-action@master
       if: steps.compile.outputs.status != 'success' && !cancelled()
-      with:
+      env:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: |
-          ⛔ 固件编译失败! ⛔
-          资源仓库: ${{ github.repository }}
-          编译耗时: ${{ env.time }}
+      run: |
+        curl https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_TO }}&text=⛔%20固件编译失败!%20⛔%0A资源仓库:%20${{ github.repository }}
 
     - name: Check space usage
       if: (!cancelled())
