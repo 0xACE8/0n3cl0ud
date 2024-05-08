@@ -7,9 +7,6 @@
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.177.97/g' package/base-files/files/bin/config_generate
 
-# Set password to PASSWORD
-sed -i 's/root:::0:99999:7:::/root:$1$4xKZB45Q$w0CPT5M6vBWbYNmSWuxfU.:0:0:99999:7:::/g' package/base-files/files/etc/shadow
-
 # Change ash to bash
 sed -i 's/ash/bash/g' package/base-files/files/etc/passwd
 
@@ -33,7 +30,7 @@ sed -i 's/timeout:-5/timeout:-120/g' feeds/packages/net/dnscrypt-proxy2/files/dn
 sed -i 's/ipv6_servers = false/ipv6_servers = true/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
 sed -i 's/odoh_servers = false/odoh_servers = true/g' /feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
 sed -i 's/http3 = false/http3 = true/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
-sed -i 's/cache_size = 4096/cache_size = 10240/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
+sed -i 's/cache_size = 4096/cache_size = 8000/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
 sed -i 's/127.0.0.1:9050/127.0.0.1:1070/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
 sed -i 's/# proxy/proxy/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
 sed -i 's/# blocked_names_file/blocked_names_file/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
