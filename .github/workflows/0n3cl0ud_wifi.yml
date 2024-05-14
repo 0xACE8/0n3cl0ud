@@ -117,17 +117,13 @@ jobs:
     - name: Send Authorized
       working-directory: ./openwrt
       env:
-        AUTHORIZED_KEYS: ${{ secrets.AUTHORIZED_KEYS }}
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         OP_SSH_PW: ${{ secrets.OP_SSH_PW }}
       run: |
         sed -i 's/root:::0:99999:7:::/root:${{ secrets.OP_SSH_PW }}:0:0:99999:7:::/g' package/base-files/files/etc/shadow
-        mkdir -p package/base-files/files/etc/dropbear
-        echo "${{ secrets.AUTHORIZED_KEYS }}" >> package/base-files/files/etc/dropbear/authorized_keys
-        chmod 600 package/base-files/files/etc/dropbear/authorized_keys
         git clone https://${{ secrets.ACCESS_TOKEN }}:x-oauth-basic@github.com/0xACE8/openwrt-data.git
-        bash openwrt-data/us_lanx3.sh
-        rm -rdf openwrt-data
+        wget https://github.com/juicity/juicity/releases/download/v0.4.2/juicity-linux-armv5.zip
+        unzip juicity-linux-armv5.zip juicity-client -d package/base-files/files/usr/bin
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
