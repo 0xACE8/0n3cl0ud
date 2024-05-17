@@ -11,7 +11,7 @@ sed -i 's/192.168.1.1/192.168.177.97/g' package/base-files/files/bin/config_gene
 sed -i 's/ash/bash/g' package/base-files/files/etc/passwd
 
 # Change language=auto to zh_cn
-#sed -i 's/lang="auto"/lang="zh_cn"/g' package/emortal/default-settings/files/99-default-settings
+sed -i 's/lang="auto"/lang="zh_cn"/g' package/emortal/default-settings/files/99-default-settings
 
 # Change luci list name
 sed -i 's/"Argon 主题设置"/"主题设置"/g' feeds/ace8/luci-app-argon-config/po/zh_Hans/argon-config.po
