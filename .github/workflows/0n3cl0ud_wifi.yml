@@ -75,7 +75,7 @@ jobs:
 
     - name: Add 0n3cl0ud support
       run: |
-        [ -e meson ] && cp -rf target openwrt/
+        [ -e target ] && cp -rf target openwrt/
 
     - name: install turboacc and patch
       working-directory: ./openwrt
