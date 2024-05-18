@@ -79,6 +79,12 @@ jobs:
         if [ -e $GITHUB_WORKSPACE/f33d5.c0nf.d3f4ult ]; then
           cp $GITHUB_WORKSPACE/f33d5.c0nf.d3f4ult $GITHUB_WORKSPACE/${{matrix.target}}
         fi
+        if [ -e $GITHUB_WORKSPACE/zzz-updata-settings ]; then
+          cp $GITHUB_WORKSPACE/zzz-updata-settings $GITHUB_WORKSPACE/${{matrix.target}}
+        fi
+        if [ -e $GITHUB_WORKSPACE/meson ]; then
+          cp -r $GITHUB_WORKSPACE/meson $GITHUB_WORKSPACE/${{matrix.target}}
+        fi
         cd $GITHUB_WORKSPACE/${{matrix.target}}
         if git status --porcelain | grep .; then
           git add .
