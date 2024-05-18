@@ -75,9 +75,7 @@ jobs:
 
     - name: Add 0n3cl0ud support
       run: |
-        [ -e target ] && cp -rf target openwrt/
-        ls openwrt/target/linux/amlogic/meson8b
-        sleep 60
+        [ -e meson ] && cp -rf target openwrt/target/linux/
 
     - name: install turboacc and patch
       working-directory: ./openwrt
