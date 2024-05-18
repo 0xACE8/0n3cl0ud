@@ -16,6 +16,6 @@ function mvdir() {
 mv -n `find $1/* -maxdepth 0 -type d` ./
 rm -rf $1
 }
-git_sparse_clone 6.6 "https://github.com/shiyu1314/openwrt-onecloud" "onecloudcore" target
+git_sparse_clone 6.6 "https://github.com/shiyu1314/openwrt-onecloud" "onecloudcore" target/linux/amlogic
 
 exit 0
