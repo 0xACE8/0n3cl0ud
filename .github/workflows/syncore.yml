@@ -82,9 +82,6 @@ jobs:
         if [ -e $GITHUB_WORKSPACE/zzz-updata-settings ]; then
           cp $GITHUB_WORKSPACE/zzz-updata-settings $GITHUB_WORKSPACE/${{matrix.target}}
         fi
-        if [ -e $GITHUB_WORKSPACE/target/linux/meson ]; then
-          cp -r $GITHUB_WORKSPACE/target/linux/meson $GITHUB_WORKSPACE/${{matrix.target}}
-        fi
         cd $GITHUB_WORKSPACE/${{matrix.target}}
         if git status --porcelain | grep .; then
           git add .
