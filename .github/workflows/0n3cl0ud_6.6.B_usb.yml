@@ -7,7 +7,7 @@
 # Description: Build using GitHub Actions
 #
 
-name: Build 0n3cl0ud 6.6.B with usb support Atcions
+name: Build 0n3cl0ud 6.6.B usb support Atcions
 
 on:
   repository_dispatch:
