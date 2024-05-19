@@ -76,8 +76,7 @@ jobs:
     - name: Add 0n3cl0ud support
       run: |
         git clone https://github.com/0xACE8/0n3cl0ud-c0r3
-        ls
-        cp -rf target openwrt
+        cp -rf 0n3cl0ud-c0r3/target openwrt
 
     - name: install turboacc and patch
       working-directory: ./openwrt
