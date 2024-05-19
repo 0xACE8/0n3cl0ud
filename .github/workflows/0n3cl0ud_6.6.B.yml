@@ -75,7 +75,9 @@ jobs:
 
     - name: Add 0n3cl0ud support
       run: |
-        [ -e target ] && cp -rf target openwrt/
+        git_sparse_clone main https://github.com/0xACE8/0n3cl0ud-c0r3 target
+        cp -rf target openwrt
+        ls openwrt/target/linux/meson
 
     - name: install turboacc and patch
       working-directory: ./openwrt
