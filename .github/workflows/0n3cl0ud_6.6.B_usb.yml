@@ -75,7 +75,7 @@ jobs:
 
     - name: Add 0n3cl0ud support
       run: |
-        git_sparse_clone main https://github.com/0xACE8/0n3cl0ud-c0r3 target
+        git clone https://github.com/0xACE8/0n3cl0ud-c0r3
         cp -rf target openwrt
         ls openwrt/target/linux/meson
 
