@@ -87,7 +87,7 @@ jobs:
       uses: stupidloud/cachewrtbuild@main
       with:
         ccache: 'true'
-        mixkey: 'oneim'
+        mixkey: 'oneima'
         prefix: 'openwrt'
 
     - name: Load custom feeds
