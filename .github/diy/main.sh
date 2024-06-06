@@ -13,10 +13,10 @@ function git_sparse_clone() {
   rm -rf $localdir
   }
 function mvdir() {
-mv -n `find $1/* -maxdepth 2 -type d` ./
+mv -n `find $1/* -maxdepth 0 -type d` ./
 rm -rf $1
 }
 #git_sparse_clone amlogic "https://github.com/0xACE8/0n3cl0ud-c0r3" "target" target
-git_sparse_clone main "https://github.com/shiyu1314/openwrt-onecloud" "OneCloud/6.6/amlogic" target/linux/amlogic
+git_sparse_clone main "https://github.com/shiyu1314/openwrt-onecloud" OneCloud
 
 exit 0
