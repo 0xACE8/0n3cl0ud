@@ -16,6 +16,6 @@ function mvdir() {
 mv -n `find $1/* -maxdepth 0 -type d` ./
 rm -rf $1
 }
-git_sparse_clone amlogic "https://github.com/0xACE8/0n3cl0ud-c0r3/tree/amlogic" "onecloudcore" target
+git_sparse_clone amlogic "https://github.com/0xACE8/0n3cl0ud-c0r3/tree/amlogic" target
 
 exit 0
