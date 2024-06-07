@@ -76,6 +76,7 @@ jobs:
     - name: Add 0n3cl0ud support
       run: |
         [ -e target ] && cp -rf target openwrt/
+        chmod +x openwrt/target/linux/amlogic/image/gen_aml_emmc_img.sh
 
     - name: install turboacc and patch
       working-directory: ./openwrt
