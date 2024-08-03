@@ -77,7 +77,7 @@ jobs:
       run: |
         [ -e target ] && cp -rf target openwrt/
         chmod +x openwrt/target/linux/amlogic/image/gen_aml_emmc_img.sh
-        sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y\nCONFIG_CPU_FREQ_GOV_SCHEDUTIL=y\nCONFIG_CPU_FREQ_GOV_CONSERVATIVE=y\nCONFIG_CPU_FREQ_GOV_ONDEMAND=y\nCONFIG_CPU_FREQ_GOV_POWERSAVE=y\nCONFIG_CPU_FREQ_GOV_USERSPACE=y/g' openwrt/target/linux/amlogic/meson8b/config-6.6
+#        sed -i 's/CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y/CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y\nCONFIG_CPU_FREQ_GOV_SCHEDUTIL=y\nCONFIG_CPU_FREQ_GOV_CONSERVATIVE=y\nCONFIG_CPU_FREQ_GOV_ONDEMAND=y\nCONFIG_CPU_FREQ_GOV_POWERSAVE=y\nCONFIG_CPU_FREQ_GOV_USERSPACE=y/g' openwrt/target/linux/amlogic/meson8b/config-6.6
 
     - name: install turboacc and patch
       working-directory: ./openwrt
