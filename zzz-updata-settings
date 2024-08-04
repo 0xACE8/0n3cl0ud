@@ -10,8 +10,8 @@
 /etc/init.d/mosdns stop
 /etc/init.d/tailscale stop
 
-#sysupgrade -r /etc/backup/OneCloud_us_lanx3.tar.gz
-#rm -rf /etc/backup
+sysupgrade -r /etc/backup/OneCloud_us_lanx3.tar.gz
+rm -rf /etc/backup
 
 uci commit system
 uci commit network
