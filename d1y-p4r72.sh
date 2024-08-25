@@ -5,7 +5,7 @@
 # Author: 0xACE7
 #=================================================
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.177.97/g' package/base-files/files/bin/config_generate
+# sed -i 's/192.168.1.1/192.168.177.97/g' package/base-files/files/bin/config_generate
 
 # Change ash to bash
 sed -i 's/ash/bash/g' package/base-files/files/etc/passwd
@@ -25,8 +25,8 @@ sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.
 sed -i 's/"终端"/"TTYD 终端"/g' feeds/luci/applications/luci-app-ttyd/po/zh_Hans/ttyd.po
 
 # dnscrypt-proxy2 patch
-sed -i 's/START=18/START=99/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
-sed -i 's/timeout:-5/timeout:-120/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
+#sed -i 's/START=18/START=99/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
+#sed -i 's/timeout:-5/timeout:-120/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
 #sed -i 's/ipv6_servers = false/ipv6_servers = true/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
 #sed -i 's/odoh_servers = false/odoh_servers = true/g' /feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
 #sed -i 's/http3 = false/http3 = true/g' feeds/packages/net/dnscrypt-proxy2/files/dnscrypt-proxy.init
@@ -75,12 +75,12 @@ wget --no-check-certificate -O feeds/ace8/luci-theme-argon/htdocs/luci-static/ar
 #wget --no-check-certificate -O include/target.mk "https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/include/target.mk"
 
 # Change to my banner
-sudo rm package/base-files/files/etc/banner
-wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/banner -O package/base-files/files/etc/banner
+#sudo rm package/base-files/files/etc/banner
+#wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/banner -O package/base-files/files/etc/banner
 
 # upgrade config
 #wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/99-init-settings -O package/base-files/files/etc/uci-defaults/99-init-settings
-wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/zzz-updata-settings -O package/base-files/files/etc/uci-defaults/zzz-updata-settings
+#wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/zzz-updata-settings -O package/base-files/files/etc/uci-defaults/zzz-updata-settings
 wget --no-check-certificate https://raw.githubusercontent.com/0xACE8/0n3cl0ud/main/30-sysinfo.sh -O feeds/packages/utils/bash/files/etc/profile.d/30-sysinfo.sh
 
 echo "diy-part2.sh is done."
